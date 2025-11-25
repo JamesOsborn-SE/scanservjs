@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:staging
           target: scanservjs-core
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Push hplip nightly staging
         if: github.ref == 'refs/heads/master' && env.NEW_COMMIT_COUNT > 0
@@ -46,7 +46,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:hplip-staging
           target: scanservjs-hplip
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Push brscan4 nightly staging
         if: github.ref == 'refs/heads/master' && env.NEW_COMMIT_COUNT > 0
@@ -72,7 +72,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:${{ steps.get_version.outputs.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:latest
           target: scanservjs-core
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Push hplip release
         if: startsWith(github.ref, 'refs/tags/v')
@@ -83,7 +83,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:hplip-release-${{ steps.get_version.outputs.VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/scanservjs:hplip-latest
           target: scanservjs-hplip
-          platforms: linux/amd64,linux/arm64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
 
       - name: Push brscan4 release
         if: startsWith(github.ref, 'refs/tags/v')
